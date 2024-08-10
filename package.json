@@ -7,8 +7,9 @@
 	"license": "ISC",
 	"main": "nahhh",
 	"scripts": {
-		"build": "tsc .",
-		"deploy": "mkdir -p ~/.config/ags && cp -RT dist ~/.config/ags/"
+		"build": "tsc",
+		"deploy": "mkdir -p ~/.config/ags && cp -RT dist ~/.config/ags/",
+		"dev": "npm run build && npm run deploy"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.9.0",

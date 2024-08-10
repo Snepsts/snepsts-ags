@@ -218,4 +218,4 @@ App.config({
 	],
 })
 
-export { }
+export {}
