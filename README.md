@@ -12,6 +12,12 @@ Set up types:
 
 > NOTE: you might need a dummy config.js to generate the types. The types folder will go in this repo. I believe in you.
 
+### Running
+
+`ags -c ~/.config/ags/config.js`
+
+> You can make it run in the background (i.e: an exec-once command) by adding an `&` to the end
+
 ### Extra
 
 If you wanna dev the way I do on this repo, create `.vscode/settings.json` and put the following in it:

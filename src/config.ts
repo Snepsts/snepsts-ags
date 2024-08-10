@@ -83,6 +83,7 @@ function Media() {
 	})
 }
 
+// TODO: Figure out why this doesn't seem to be reactive, or even accurate off the rip
 function Volume() {
 	const icons = {
 		101: 'overamplified',
