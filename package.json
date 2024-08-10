@@ -1,0 +1,20 @@
+{
+	"name": "snepsts-ags",
+	"type": "module",
+	"version": "0.0.1",
+	"description": "Snepsts ags status bar",
+	"author": "Snepsts",
+	"license": "ISC",
+	"main": "nahhh",
+	"scripts": {
+		"build": "tsc .",
+		"deploy": "mkdir -p ~/.config/ags && cp -RT dist ~/.config/ags/"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.9.0",
+		"@types/eslint__js": "^8.42.3",
+		"eslint": "^9.8.0",
+		"typescript": "^5.5.4",
+		"typescript-eslint": "^8.0.1"
+	}
+}
