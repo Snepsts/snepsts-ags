@@ -53,4 +53,4 @@ If you're on VSCode, I highly recommend you create `.vscode/settings.json` and p
 
 ### A word from me
 
-This is my custom AGS implementation. We trying out here.
+This is my custom AGS configuration. We trying out here.
