@@ -4,34 +4,53 @@ Hi! I'm trying to make something dope but right now tbh it probably sucks. Here'
 
 ### Installation
 
-`paru -S aylurs-gtk-shell`
+`paru -S aylurs-gtk-shell-git`
 
-Set up types:
+Install core files:
 
-`ags --init -c ~/.config/ags/config.js`
+`ags init`
 
-> NOTE: you might need a dummy config.js to generate the types. The types folder will go in this repo. I believe in you.
+> This installs a template AGS setup in ~/.config/ags, which is not needed. What _is_ needed is the /usr/share/ags/js install it creates
+
+### Set up project for dev
+
+Grab project:
+
+`git clone git@github.com:Snepsts/snepsts-ags.git`
+
+Install types:
+
+`ags types -d snepsts-ags`
+
+Enter directory:
+
+`cd snepsts-ags`
+
+Install deps:
+
+`npm i`
 
 ### Running
 
-`ags -c ~/.config/ags/config.js`
+`ags run app.ts`
 
 > You can make it run in the background (i.e: an exec-once command) by adding an `&` to the end
 
+> If you install it to .config/ags instead of path/to/dir/snepsts-ags, you can just run ags run --gtk4
+
 ### Extra
 
-If you wanna dev the way I do on this repo, create `.vscode/settings.json` and put the following in it:
+If you're on VSCode, I highly recommend you create `.vscode/settings.json` and put the following in it:
 ```JSON
 {
 	"editor.detectIndentation": false,
 	"editor.tabSize": 2,
 	"editor.insertSpaces": false,
-	"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	"typescript.tsdk": "node_modules/typescript/lib"
 }
 ```
 
 ### A word from me
 
-This is my custom implementation of ags to setup a cool, functional system UI. Intended to be used with Hyprland. Inspired by end-4's dotfiles.
-
-TODO: Maybe only have .confg/ags have outputted files from ts project and have ts project live in a diff folder
+This is my custom AGS implementation. We trying out here.

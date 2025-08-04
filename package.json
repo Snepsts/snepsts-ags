@@ -11,6 +11,9 @@
 		"deploy": "mkdir -p ~/.config/ags && cp -RT dist ~/.config/ags/",
 		"dev": "npm run build && npm run deploy"
 	},
+	"dependencies": {
+		"ags": "/usr/share/ags/js"
+	},
 	"devDependencies": {
 		"@eslint/js": "^9.9.0",
 		"@types/eslint__js": "^8.42.3",
