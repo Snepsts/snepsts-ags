@@ -36,7 +36,7 @@ Install deps:
 
 > You can make it run in the background (i.e: an exec-once command) by adding an `&` to the end
 
-> If you install it to .config/ags instead of path/to/dir/snepsts-ags, you can just run ags run --gtk4
+> If you install it to .config/ags instead of path/to/dir/snepsts-ags, you can just run ags run
 
 ### Extra
 
