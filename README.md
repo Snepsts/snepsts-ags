@@ -43,10 +43,9 @@ Install deps:
 If you're on VSCode, I highly recommend you create `.vscode/settings.json` and put the following in it:
 ```JSON
 {
-	"editor.detectIndentation": false,
 	"editor.tabSize": 2,
 	"editor.insertSpaces": false,
-	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"typescript.tsdk": "node_modules/typescript/lib"
 }
 ```
