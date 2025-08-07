@@ -43,14 +43,18 @@ Install deps:
 ### Extra
 
 If you're on VSCode, I highly recommend you create `.vscode/settings.json` and put the following in it:
+
 ```JSON
 {
 	"editor.tabSize": 2,
 	"editor.insertSpaces": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"editor.formatOnSave": true
 }
 ```
+
+You'll want the ESLint and Prettier extensions as well. They're in both the default marketplace and the Open VSX Registry.
 
 ### A word from me
 
