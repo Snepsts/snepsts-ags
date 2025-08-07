@@ -12,6 +12,8 @@ Install core files:
 
 > This installs a template AGS setup in ~/.config/ags, which is not needed. What _is_ needed is the /usr/share/ags/js install it creates
 
+> NOTE: It's possible it doesn't actually create the /usr/share/ags/js install and that is made by installing the arch package. Will figure out later.
+
 ### Set up project for dev
 
 Grab project:
