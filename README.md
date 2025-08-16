@@ -14,6 +14,8 @@ Install core files:
 
 > NOTE: It's possible it doesn't actually create the /usr/share/ags/js install and that is made by installing the arch package. Will figure out later.
 
+Install the [Hyprland Astal library](https://aylur.github.io/astal/guide/libraries/hyprland).
+
 ### Set up project for dev
 
 Grab project:
@@ -33,6 +35,12 @@ Install deps:
 `npm i`
 
 ### Running
+
+You may need to set this first if you installed the Hyprland Astal lib from source (if you did the meson commands)
+
+`export GI_TYPELIB_PATH=/usr/local/lib/girepository-1.0`
+
+> NOTE: You should check if $GI_TYPELIB_PATH already exists first, if so, modify as needed (i.e: appending :$GI_TYPELIB_PATH)
 
 `ags run app.ts`
 

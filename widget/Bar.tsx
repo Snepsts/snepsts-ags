@@ -2,6 +2,7 @@ import app from 'ags/gtk4/app'
 import { Astal, Gtk, Gdk } from 'ags/gtk4'
 import { execAsync } from 'ags/process'
 import { createPoll } from 'ags/time'
+import HyprWorkspaces from './HyprWorkspaces'
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
 	const time = createPoll('', 1000, 'date')
@@ -18,14 +19,15 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
 			application={app}
 		>
 			<centerbox cssName="centerbox">
-				<button
+				<HyprWorkspaces $type="start" gdkmonitor={gdkmonitor} />
+				{/* <button
 					$type="start"
 					onClicked={() => execAsync('echo hello').then(console.log)}
 					hexpand
 					halign={Gtk.Align.CENTER}
 				>
 					<label label="Welcome to AGS!" />
-				</button>
+				</button> */}
 				<box $type="center" />
 				<menubutton $type="end" hexpand halign={Gtk.Align.CENTER}>
 					<label label={time} />
