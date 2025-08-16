@@ -21,7 +21,7 @@ window.Bar {
 	}
 
 	button {
-		border-radius: 8px;
+		border-radius: 24px;
 		margin: 2px;
 	}
 }
@@ -50,4 +50,8 @@ window.Bar {
 
 .workspace-inactive {
 	color: $sub-accent-color;
+}
+
+.label-button {
+	font-weight: bold;
 }
