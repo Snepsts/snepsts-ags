@@ -11,9 +11,10 @@ export default function TimeDate() {
 		const readableHours = hours % 12
 		const readablePaddedHours = readableHours < 10 ? `0${readableHours}` : readableHours
 		const minutes = date.getMinutes()
+		const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes
 		const isMorning = hours < 12
 
-		return `${readablePaddedHours}:${minutes} ${isMorning ? 'AM' : 'PM'}`
+		return `${readablePaddedHours}:${paddedMinutes} ${isMorning ? 'AM' : 'PM'}`
 	})
 
 	const dateTime = time((t) => {
