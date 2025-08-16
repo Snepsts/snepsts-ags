@@ -25,6 +25,16 @@ export default function HyprWorkspaces(props: Props) {
 	const { HORIZONTAL } = Gtk.Orientation
 	const hyprMonitors = createBinding(hyprlandStore, 'hyprMonitors')
 
+	function getWorkspaceClass(workspace: Hyprland.Workspace) {
+		if (hyprland.focusedWorkspace.id === workspace.id) {
+			return 'workspace-focused'
+		} else if (workspace.monitor.activeWorkspace.id === workspace.id) {
+			return 'workspace-active'
+		}
+
+		return 'workspace-inactive'
+	}
+
 	return (
 		<box orientation={HORIZONTAL} class="hyprland-workspaces" spacing={8}>
 			<For each={hyprMonitors}>
@@ -32,7 +42,7 @@ export default function HyprWorkspaces(props: Props) {
 					const [workspaces] = createState(hyprMonitor.workspaces)
 					return (
 						<box orientation={HORIZONTAL} class="hyprland-workspace-monitor" spacing={8}>
-							<For each={workspaces}>{(workspace) => <label label={`${workspace.id}`} />}</For>
+							<For each={workspaces}>{(workspace) => <label label={'●'} class={getWorkspaceClass(workspace)} />}</For>
 						</box>
 					)
 				}}

@@ -1,7 +1,13 @@
 // https://gitlab.gnome.org/GNOME/gtk/-/blob/gtk-3-24/gtk/theme/Adwaita/_colors-public.scss
+// https://docs.gtk.org/gtk4/css-overview.html
+// https://docs.gtk.org/gtk4/css-properties.html
 $fg-color: #{'@theme_fg_color'};
 $bg-color: #{'@theme_bg_color'};
 $base-color: #{'@theme_base_color'};
+// the following colors are based on vimix themes:
+$accent-color: #{'@accent_color'};
+$sub-accent-color: #f58782; // need a sub accent defined on the GTK theme
+$dark-accent-color: #e01b24; // need a dark accent defined on the GTK theme
 
 window.Bar {
 	background: transparent;
@@ -32,4 +38,16 @@ window.Bar {
 	padding-right: 8px;
 	padding-bottom: 4px;
 	padding-top: 4px;
+}
+
+.workspace-focused {
+	color: $dark-accent-color;
+}
+
+.workspace-active {
+	color: $accent-color;
+}
+
+.workspace-inactive {
+	color: $sub-accent-color;
 }
