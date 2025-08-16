@@ -1,11 +1,9 @@
 import app from 'ags/gtk4/app'
-import { Astal, Gtk, Gdk } from 'ags/gtk4'
-import { execAsync } from 'ags/process'
-import { createPoll } from 'ags/time'
+import { Astal, Gdk } from 'ags/gtk4'
 import HyprWorkspaces from './HyprWorkspaces'
+import TimeDate from './TimeDate'
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
-	const time = createPoll('', 1000, 'date')
 	const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
 
 	return (
@@ -29,12 +27,9 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
 					<label label="Welcome to AGS!" />
 				</button> */}
 				<box $type="center" />
-				<menubutton $type="end" hexpand halign={Gtk.Align.CENTER}>
-					<label label={time} />
-					<popover>
-						<Gtk.Calendar />
-					</popover>
-				</menubutton>
+				<box $type="end" marginEnd={16}>
+					<TimeDate />
+				</box>
 			</centerbox>
 		</window>
 	)
