@@ -8,7 +8,7 @@ export default function TimeDate() {
 		const date = new Date(t)
 
 		const hours = date.getHours()
-		const readableHours = hours % 12
+		const readableHours = hours % 12 === 0 ? 12 : hours % 12
 		const readablePaddedHours = readableHours < 10 ? `0${readableHours}` : readableHours
 		const minutes = date.getMinutes()
 		const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes
