@@ -2,3 +2,6 @@ node_modules/
 @girs/
 !.vscode/settings.json
 .vscode
+icons/
+lib/mdi-svg.ts
+dist/

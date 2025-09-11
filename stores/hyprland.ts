@@ -17,7 +17,7 @@ const hyprlandStore = new HyprlandStore()
 // but since monitors are only used for workspaces atm, it's possible focused-workspace is all we'll need
 
 function setHyprMonitors() {
-	const hyprMonitors = getHyprMonitorsFromWorkspaces(hyprland.workspaces)
+	const hyprMonitors = getHyprMonitorsFromWorkspaces(hyprland.get_workspaces())
 	hyprlandStore.hyprMonitors = hyprMonitors
 	hyprlandStore.isMultiMonitor = hyprMonitors.length > 1
 }

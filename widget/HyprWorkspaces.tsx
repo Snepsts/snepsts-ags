@@ -26,9 +26,9 @@ export default function HyprWorkspaces(props: Props) {
 	const hyprMonitors = createBinding(hyprlandStore, 'hyprMonitors')
 
 	function getWorkspaceClass(workspace: Hyprland.Workspace) {
-		if (hyprland.focusedWorkspace.id === workspace.id) {
+		if (hyprland.get_focused_workspace().id === workspace.id) {
 			return 'workspace-focused'
-		} else if (workspace.monitor.activeWorkspace.id === workspace.id) {
+		} else if (workspace.get_monitor().get_active_workspace().id === workspace.id) {
 			return 'workspace-active'
 		}
 

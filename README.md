@@ -34,6 +34,12 @@ Install deps:
 
 `npm i`
 
+Run the script for setting up SVGs:
+
+```bash
+sh prepare-svg-files.sh
+```
+
 ### Running
 
 You may need to set this first if you installed the Hyprland Astal lib from source (if you did the meson commands)

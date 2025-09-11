@@ -1,5 +1,6 @@
 import { createState, With } from 'ags'
 import { createPoll } from 'ags/time'
+import Icon from '../components/Icon'
 
 export default function TimeDate() {
 	const time = createPoll('', 3000, 'date')
@@ -21,10 +22,12 @@ export default function TimeDate() {
 		const date = new Date(t)
 
 		const month = date.getMonth()
+		const readableMonth = month < 10 ? `0${month}` : month
 		const day = date.getDate()
-		const year = date.getFullYear()
+		const readableDay = day < 10 ? `0${day}` : day
+		const year = `${date.getFullYear()}`.substring(2)
 
-		return `${month}/${day}/${year}`
+		return `${readableMonth}/${readableDay}/${year}`
 	})
 
 	const [showDate, setShowDate] = createState(false)
@@ -32,7 +35,17 @@ export default function TimeDate() {
 	return (
 		<button class="label-button" onClicked={() => setShowDate(!showDate.get())}>
 			<With value={showDate}>
-				{(shouldShowDate) => (shouldShowDate ? <label label={dateTime} /> : <label label={dayTime} />)}
+				{(shouldShowDate) =>
+					shouldShowDate ? (
+						<box>
+							<Icon iconName="calendar-symbolic" /> <label label={dateTime} />
+						</box>
+					) : (
+						<box>
+							<Icon iconName="clock-outline-symbolic" /> <label label={dayTime} />
+						</box>
+					)
+				}
 			</With>
 		</button>
 	)
