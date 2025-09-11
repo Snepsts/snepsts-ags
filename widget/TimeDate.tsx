@@ -1,4 +1,5 @@
-import { createState, With } from 'ags'
+import { Gtk } from 'ags/gtk4'
+import { createState } from 'ags'
 import { createPoll } from 'ags/time'
 import Icon from '../components/Icon'
 
@@ -32,21 +33,18 @@ export default function TimeDate() {
 
 	const [showDate, setShowDate] = createState(false)
 
+	// below, we need the box orientation of HORIZONTAL since without that box
+	// with that setting, then only the bottom box gets displayed
 	return (
 		<button class="label-button" onClicked={() => setShowDate(!showDate.get())}>
-			<With value={showDate}>
-				{(shouldShowDate) =>
-					shouldShowDate ? (
-						<box>
-							<Icon iconName="calendar-symbolic" /> <label label={dateTime} />
-						</box>
-					) : (
-						<box>
-							<Icon iconName="clock-outline-symbolic" /> <label label={dayTime} />
-						</box>
-					)
-				}
-			</With>
+			<box orientation={Gtk.Orientation.HORIZONTAL}>
+				<box visible={showDate}>
+					<Icon iconName="calendar-symbolic" /> <label label={dateTime} />
+				</box>
+				<box visible={showDate((v) => !v)}>
+					<Icon iconName="clock-outline-symbolic" /> <label label={dayTime} />
+				</box>
+			</box>
 		</button>
 	)
 }
