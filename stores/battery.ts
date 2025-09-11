@@ -5,6 +5,7 @@ import Battery from 'gi://AstalBattery'
 class BatteryStore extends GObject.Object {
 	@property(Boolean) isCharging = false
 	@property(Number) percentage = 0
+	@property(Boolean) isFull = false
 }
 
 const battery = Battery.get_default()
@@ -22,7 +23,9 @@ battery.connect('notify::charging', () => {
 })
 
 function setPercentage() {
-	batteryStore.percentage = Math.round(battery.percentage * 100)
+	const percentage = Math.round(battery.percentage * 100)
+	batteryStore.percentage = percentage
+	batteryStore.isFull = percentage === 100
 }
 
 battery.connect('notify::percentage', () => {
