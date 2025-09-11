@@ -5,15 +5,16 @@ const DEBUG = true
 
 type Props = {
 	iconName: MdiSvgName
+	classStr?: string
 	children?: Children
 }
 
 export default function Icon(props: Props) {
-	const { iconName } = props
+	const { iconName, classStr } = props
 
 	if (DEBUG) {
-		console.log('Rendering SVG Icon with name ' + iconName)
+		console.log('Rendering SVG Icon with name ' + iconName + ' and class ' + classStr)
 	}
 
-	return <image icon_name={iconName}></image>
+	return <image icon_name={iconName} class={classStr}></image>
 }

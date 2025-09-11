@@ -5,6 +5,7 @@ import Hyprland from 'gi://AstalHyprland'
 import { Children } from '../lib/common'
 import { getCurrentMonitor } from '../lib/hyprland'
 import hyprlandStore from '../stores/hyprland'
+import Icon from '../components/Icon'
 
 type Props = {
 	gdkmonitor: Gdk.Monitor
@@ -35,6 +36,14 @@ export default function HyprWorkspaces(props: Props) {
 		return 'workspace-inactive'
 	}
 
+	function getWorkspaceIcon(workspace: Hyprland.Workspace) {
+		if (hyprland.get_focused_workspace().id === workspace.id) {
+			return 'record-circle-symbolic'
+		}
+
+		return 'record-circle-outline-symbolic'
+	}
+
 	return (
 		<box orientation={HORIZONTAL} class="hyprland-workspaces" spacing={8}>
 			<For each={hyprMonitors}>
@@ -42,7 +51,9 @@ export default function HyprWorkspaces(props: Props) {
 					const [workspaces] = createState(hyprMonitor.workspaces)
 					return (
 						<box orientation={HORIZONTAL} class="hyprland-workspace-monitor" spacing={8}>
-							<For each={workspaces}>{(workspace) => <label label={'●'} class={getWorkspaceClass(workspace)} />}</For>
+							<For each={workspaces}>
+								{(workspace) => <Icon iconName={getWorkspaceIcon(workspace)} classStr={getWorkspaceClass(workspace)} />}
+							</For>
 						</box>
 					)
 				}}
