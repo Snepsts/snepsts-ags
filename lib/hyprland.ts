@@ -34,7 +34,7 @@ export interface HyprMonitor {
 	workspaces: Hyprland.Workspace[]
 }
 
-export function getHyprMonitors(workspacesByMonitor: WorkspacesByMonitor): HyprMonitor[] {
+export function getHyprMonitors(workspacesByMonitor: WorkspacesByMonitor) {
 	const hyprMonitors: HyprMonitor[] = []
 
 	for (const monitor in workspacesByMonitor) {
