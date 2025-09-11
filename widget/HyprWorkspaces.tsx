@@ -27,9 +27,7 @@ export default function HyprWorkspaces(props: Props) {
 	const hyprMonitors = createBinding(hyprlandStore, 'hyprMonitors')
 
 	function getWorkspaceClass(workspace: Hyprland.Workspace) {
-		if (hyprland.get_focused_workspace().id === workspace.id) {
-			return 'workspace-focused'
-		} else if (workspace.get_monitor().get_active_workspace().id === workspace.id) {
+		if (workspace.get_monitor().get_active_workspace().id === workspace.id) {
 			return 'workspace-active'
 		}
 
@@ -37,7 +35,7 @@ export default function HyprWorkspaces(props: Props) {
 	}
 
 	function getWorkspaceIcon(workspace: Hyprland.Workspace) {
-		if (hyprland.get_focused_workspace().id === workspace.id) {
+		if (workspace.get_monitor().get_active_workspace().id === workspace.id) {
 			return 'record-circle-symbolic'
 		}
 
