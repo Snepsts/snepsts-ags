@@ -38,7 +38,7 @@ export default function TimeDate() {
 	return (
 		<button class="label-button" onClicked={() => setShowDate(!showDate.get())}>
 			<box orientation={Gtk.Orientation.HORIZONTAL}>
-				<box visible={showDate}>
+				<box visible={showDate} marginStart={1} marginEnd={1}>
 					<Icon iconName="calendar-symbolic" /> <label label={dateTime} />
 				</box>
 				<box visible={showDate((v) => !v)}>
