@@ -1,7 +1,7 @@
 import { interval } from 'ags/time'
-import { Children } from '../lib/common'
+import { Children, getVisible } from '../lib/common'
 import { MdiSvgName } from '../lib/mdi-svg'
-import { createState } from 'ags'
+import { Accessor, createState } from 'ags'
 import DynamicIcon from './DynamicIcon'
 
 const DEBUG = true
@@ -9,6 +9,7 @@ const DEBUG = true
 type Props = {
 	iconNames: MdiSvgName[]
 	iconPollRateMs?: number
+	visible?: Accessor<boolean> | boolean
 	children?: Children
 }
 
@@ -23,8 +24,9 @@ export default function AnimatedIcon(props: Props) {
 		setAnimationIndex((v) => (v === iconNames.length - 1 ? 0 : v + 1))
 	}
 
+	const visible = getVisible(props.visible)
 	const iconPollrateMs = props.iconPollRateMs ?? 1000
 	interval(iconPollrateMs, incrementAnimationIndex)
 
-	return <DynamicIcon iconNames={iconNames} activeIconIndex={animationIndex} />
+	return <DynamicIcon iconNames={iconNames} activeIconIndex={animationIndex} visible={visible} />
 }
