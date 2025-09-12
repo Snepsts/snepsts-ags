@@ -10,7 +10,7 @@ export function getMonitorName(monitor: Hyprland.Monitor) {
 }
 
 export function getCurrentMonitor(hyprland: Hyprland.Hyprland, gdkmonitor: Gdk.Monitor) {
-	return hyprland.monitors.find((monitor) => getMonitorName(monitor) === getGdkMonitorName(gdkmonitor))
+	return hyprland.get_monitors().find((monitor) => getMonitorName(monitor) === getGdkMonitorName(gdkmonitor))
 }
 
 type WorkspacesByMonitor = { [id: string]: Hyprland.Workspace[] }
@@ -41,7 +41,10 @@ export function getHyprMonitors(workspacesByMonitor: WorkspacesByMonitor) {
 		hyprMonitors.push({
 			monitor,
 			workspaces: [...workspacesByMonitor[monitor]]
-				.filter((workspace) => workspace.clients.length > 0 || workspace.monitor.activeWorkspace.id === workspace.id) // empty, unfocused workspaces get deleted anyway
+				.filter(
+					(workspace) =>
+						workspace.get_clients().length > 0 || workspace.get_monitor().get_active_workspace().id === workspace.id
+				) // empty, unfocused workspaces get deleted anyway
 				.sort((first, second) => first.id - second.id), // pre-sort the workspaces by ID
 		})
 	}
