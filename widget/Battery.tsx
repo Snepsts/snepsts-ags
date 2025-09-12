@@ -2,26 +2,15 @@ import { createBinding, With } from 'ags'
 import batteryStore from '../stores/battery'
 import Icon from '../components/Icon'
 import AnimatedIcon from '../components/AnimatedIcon'
-import { MdiSvgName } from '../lib/mdi-svg'
+import { getBatteryStateIconIndex, batteryStateIconNames, chargingIconNames } from '../lib/battery'
+import DynamicIcon from '../components/DynamicIcon'
 
 export default function Battery() {
 	const batteryPercentage = createBinding(batteryStore, 'percentage')
 	const batteryLabel = batteryPercentage((b) => `${b.toString()}%`)
 	const batteryIsCharging = createBinding(batteryStore, 'isCharging')
 	const isFull = createBinding(batteryStore, 'isFull')
-
-	const animatedIconNames: MdiSvgName[] = [
-		'battery-charging-10-symbolic',
-		'battery-charging-20-symbolic',
-		'battery-charging-30-symbolic',
-		'battery-charging-40-symbolic',
-		'battery-charging-50-symbolic',
-		'battery-charging-60-symbolic',
-		'battery-charging-70-symbolic',
-		'battery-charging-80-symbolic',
-		'battery-charging-90-symbolic',
-		'battery-charging-100-symbolic',
-	]
+	const activeDynamicIconIndex = batteryPercentage((batteryLevel) => getBatteryStateIconIndex(batteryLevel))
 
 	return (
 		<box>
@@ -36,13 +25,13 @@ export default function Battery() {
 											<Icon iconName="battery-charging-symbolic" />
 										) : (
 											// else, show animated charging icon
-											<AnimatedIcon iconNames={animatedIconNames} />
+											<AnimatedIcon iconNames={chargingIconNames} />
 										)
 									}
 								</With>
 							</box>
 						) : (
-							<Icon iconName="battery-symbolic" />
+							<DynamicIcon iconNames={batteryStateIconNames} activeIconIndex={activeDynamicIconIndex} />
 						)
 					}
 				</With>
