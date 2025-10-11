@@ -1,7 +1,7 @@
 import { interval } from 'ags/time'
 import { Children, getVisible } from '../lib/common'
 import { MdiSvgName } from '../lib/mdi-svg'
-import { Accessor, createState } from 'ags'
+import { Accessor, createState, onCleanup } from 'ags'
 import DynamicIcon from './DynamicIcon'
 
 const DEBUG = true
@@ -25,8 +25,10 @@ export default function AnimatedIcon(props: Props) {
 	}
 
 	const visible = getVisible(props.visible)
+
 	const iconPollrateMs = props.iconPollRateMs ?? 1000
-	interval(iconPollrateMs, incrementAnimationIndex)
+	const animationInterval = interval(iconPollrateMs, incrementAnimationIndex)
+	onCleanup(() => animationInterval.cancel())
 
 	return <DynamicIcon iconNames={iconNames} activeIconIndex={animationIndex} visible={visible} />
 }
