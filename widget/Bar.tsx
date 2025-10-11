@@ -3,6 +3,7 @@ import { Astal, Gdk } from 'ags/gtk4'
 import HyprWorkspaces from './HyprWorkspaces'
 import TimeDate from './TimeDate'
 import Battery from './Battery'
+import CpuBarMonitor from './CpuBarMonitor'
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
 	const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
@@ -29,8 +30,15 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
 				</button> */}
 				<box $type="center" />
 				<box $type="end" marginEnd={16}>
-					<Battery />
-					<TimeDate />
+					<box marginEnd={4}>
+						<CpuBarMonitor />
+					</box>
+					<box marginEnd={4}>
+						<Battery />
+					</box>
+					<box marginEnd={4}>
+						<TimeDate />
+					</box>
 				</box>
 			</centerbox>
 		</window>
