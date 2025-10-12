@@ -4,7 +4,7 @@ import { MdiSvgName } from '../lib/mdi-svg'
 import { Accessor, createState, onCleanup } from 'ags'
 import DynamicIcon from './DynamicIcon'
 
-const DEBUG = true
+const DEBUG = false
 
 type Props = {
 	iconNames: MdiSvgName[]
