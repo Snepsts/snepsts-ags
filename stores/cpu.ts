@@ -1,7 +1,11 @@
 import { interval } from 'ags/time'
 import { readConfFile, getSnepstsOsConfigDir } from '../lib/common'
 import GObject, { register, property } from 'ags/gobject'
-import { getCpuUsageInfo, ProcInfoCpuOutput, CpuThreadInfo } from '../lib/cpu'
+import { getCpuUsageInfo, ProcInfoCpuOutput, CpuThreadInfo, CpuUsageInfo } from '../lib/cpu'
+import { PerformanceMonitor } from '../lib/hardware'
+
+// TODO: make perfMonitor history configurable
+const perfMonitor = new PerformanceMonitor<CpuUsageInfo>(10)
 
 const defaultCpuThreadInfo: CpuThreadInfo[] = [{ thread: 0, usage: 0 }]
 
@@ -13,6 +17,8 @@ class CpuStore extends GObject.Object {
 	@property(Boolean) initializing = true
 	@property(Array<CpuThreadInfo>) threadUsage = defaultCpuThreadInfo
 	@property(Number) totalUsage = 0
+	// TODO: How to do the below???
+	// @property(PerformanceMonitor<CpuUsageInfo>) performanceMonitor = perfMonitor
 }
 
 const cpuStore = new CpuStore()
