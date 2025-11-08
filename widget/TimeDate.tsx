@@ -22,7 +22,7 @@ export default function TimeDate() {
 	const dateTime = time((t) => {
 		const date = new Date(t)
 
-		const month = date.getMonth()
+		const month = date.getMonth() + 1 // date.getMonth() is 0 indexed
 		const readableMonth = month < 10 ? `0${month}` : month
 		const day = date.getDate()
 		const readableDay = day < 10 ? `0${day}` : day
