@@ -2,7 +2,7 @@ import { Accessor } from 'ags'
 import { Children, getVisible } from '../lib/common'
 import { MdiSvgName } from '../lib/mdi-svg'
 
-const DEBUG = true
+const DEBUG = false
 
 type Props = {
 	iconName: MdiSvgName
@@ -16,7 +16,7 @@ export default function Icon(props: Props) {
 	const { iconName, classStr, pixelSize } = props
 
 	if (DEBUG) {
-		console.log('Rendering SVG Icon with name ' + iconName + ' and class ' + classStr)
+		console.log(`Rendering SVG Icon with name ${iconName} and class ${classStr}`)
 	}
 
 	const visible = getVisible(props.visible)
