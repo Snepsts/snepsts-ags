@@ -5,7 +5,7 @@ import { getCpuUsageInfo, ProcInfoCpuOutput, CpuThreadInfo, CpuUsageInfo } from 
 import { PerformanceMonitor } from '../lib/hardware'
 
 // TODO: make perfMonitor history configurable
-const perfMonitor = new PerformanceMonitor<CpuUsageInfo>(10)
+export const performanceMonitor = new PerformanceMonitor<CpuUsageInfo>(16)
 
 const defaultCpuThreadInfo: CpuThreadInfo[] = [{ thread: 0, usage: 0 }]
 
@@ -21,7 +21,7 @@ class CpuStore extends GObject.Object {
 	// @property(PerformanceMonitor<CpuUsageInfo>) performanceMonitor = perfMonitor
 }
 
-const cpuStore = new CpuStore()
+export const cpuStore = new CpuStore()
 
 function initCpuStore() {
 	try {
@@ -46,6 +46,7 @@ interval(2000, () => {
 	const { cpuUsageInfo, cache } = getCpuUsageInfo(procCache)
 	cpuStore.totalUsage = cpuUsageInfo.usage
 	cpuStore.threadUsage = cpuUsageInfo.threads
+	performanceMonitor.addToHistory(cpuUsageInfo)
 	procCache = cache
 })
 

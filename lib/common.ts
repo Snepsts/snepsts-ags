@@ -79,3 +79,72 @@ function parseConfLine(confLine: string): string[] | null {
 	}
 	return returnValue
 }
+
+const hexToNumberMap: { [key: string]: number } = {
+	'0': 0,
+	'1': 1,
+	'2': 2,
+	'3': 3,
+	'4': 4,
+	'5': 5,
+	'6': 6,
+	'7': 7,
+	'8': 8,
+	'9': 9,
+	a: 10,
+	A: 10,
+	b: 11,
+	B: 11,
+	c: 12,
+	C: 12,
+	d: 13,
+	D: 13,
+	e: 14,
+	E: 14,
+	f: 15,
+	F: 15,
+}
+
+function convertHexToNumber(hexAsString: string) {
+	if (DEBUG) {
+		console.log(`Converting ${hexAsString} to number`)
+	}
+	let bigValue = hexToNumberMap[hexAsString[0]] ?? null
+	if (bigValue === null) {
+		if (DEBUG) {
+			console.log('Big Value detected as wrong')
+		}
+		return 0
+	}
+	bigValue *= 16
+	const littleValue = hexToNumberMap[hexAsString[1]] ?? null
+	if (littleValue === null) {
+		if (DEBUG) {
+			console.log('Little Value detected as wrong')
+		}
+		return 0
+	}
+	return bigValue + littleValue
+}
+
+export function hexToRgb(hexString: string) {
+	if (DEBUG) {
+		console.log(`Converting ${hexString} to rgb value`)
+	}
+
+	if (hexString[0] !== '#' || hexString.length < 7) return { r: 0, g: 0, b: 0 }
+
+	const r = convertHexToNumber(hexString.substring(1, 3))
+	const g = convertHexToNumber(hexString.substring(3, 5))
+	const b = convertHexToNumber(hexString.substring(5, 7))
+
+	if (DEBUG) {
+		console.log(`Converted ${hexString} to R: ${r}, G: ${g}, B: ${b}`)
+	}
+
+	return { r, g, b }
+}
+
+export function convertRgbToCairo(rgb: { r: number; g: number; b: number }) {
+	return { r: rgb.r / 255, g: rgb.g / 255, b: rgb.b / 255 }
+}
