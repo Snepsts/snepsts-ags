@@ -21,7 +21,7 @@ export interface CpuThreadInfo {
 	usage: number // a percentage, will be between 0-100
 }
 
-interface CpuUsageInfo {
+export interface CpuUsageInfo {
 	usage: number
 	threads: CpuThreadInfo[]
 }
