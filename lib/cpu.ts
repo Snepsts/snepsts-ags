@@ -1,4 +1,4 @@
-import { exec } from 'ags/process'
+import { readFile } from 'ags/file'
 
 const DEBUG = false
 
@@ -91,7 +91,7 @@ export function getCpuUsageInfo(procInfoCache: ProcInfoCpuOutput[]) {
 function getProcStatCpuInfo() {
 	const cpuInfo: ProcInfoCpuOutput[] = []
 
-	const procInfoOutput = exec('cat /proc/stat')
+	const procInfoOutput = readFile('/proc/stat')
 	const outputByLine = procInfoOutput.split('\n')
 
 	for (const line of outputByLine) {
