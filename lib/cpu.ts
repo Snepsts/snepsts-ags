@@ -48,7 +48,7 @@ export function getCpuUsageInfo(procInfoCache: ProcInfoCpuOutput[]) {
 		cpuToPerfMapCache[procLineCache.id] = procLineCache
 	}
 
-	// the logic for this is simple: any time not spend idle is busy time
+	// the logic for this is simple: any time not spent idle is busy time
 	// (note I am not an expert, this could be wrong lol)
 	// TODO: Usage is always a little higher than reported in bashtop, investigate
 	for (const cpuToPerfKey in cpuToPerfMap) {
@@ -76,7 +76,7 @@ export function getCpuUsageInfo(procInfoCache: ProcInfoCpuOutput[]) {
 			cpuUsageInfo.usage = usage
 		} else {
 			// cpu#
-			const threadInfo: CpuThreadInfo = { thread: Number(entry.id.at(3)), usage }
+			const threadInfo: CpuThreadInfo = { thread: Number(entry.id.slice(3)), usage }
 			cpuUsageInfo.threads.push(threadInfo)
 		}
 	}
