@@ -4,7 +4,7 @@ import { createPoll } from 'ags/time'
 import Icon from '../components/Icon'
 
 export default function TimeDate() {
-	const time = createPoll('', 3000, 'date')
+	const time = createPoll(new Date().toString(), 3000, 'date')
 
 	const dayTime = time((t) => {
 		const date = new Date(t)
