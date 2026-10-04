@@ -66,7 +66,7 @@ export function getCpuUsageInfo(procInfoCache: ProcInfoCpuOutput[]) {
 		const totalTime = user + nice + system + idle + iowait + irq + softirq
 		const busyTime = user + nice + system + iowait + irq + softirq
 
-		const usage = Math.round((busyTime / totalTime) * 100)
+		const usage = totalTime > 0 ? Math.round((busyTime / totalTime) * 100) : 0
 
 		if (DEBUG) {
 			console.log(`Busy time: ${busyTime}, total time: ${totalTime}, usage: ${usage}`)
