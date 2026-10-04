@@ -28,13 +28,9 @@ export interface CpuUsageInfo {
 
 export function getCpuUsageInfo(procInfoCache: ProcInfoCpuOutput[]) {
 	// if there is no cache, this is a first time run
-	let firstTime = false
-	if (procInfoCache.length === 0 || procInfoCache[0].user === 0) {
-		firstTime = true
-	}
+	const firstTime = procInfoCache.length === 0 || procInfoCache[0].user === 0
 
 	const cpuUsageInfo: CpuUsageInfo = { usage: 0, threads: [] }
-
 	const procInfo = getProcStatCpuInfo()
 
 	if (firstTime) {
