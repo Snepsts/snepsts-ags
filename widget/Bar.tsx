@@ -4,6 +4,7 @@ import HyprWorkspaces from './HyprWorkspaces'
 import TimeDate from './TimeDate'
 import Battery from './Battery'
 import CpuBarMonitor from './CpuBarMonitor'
+import DevPanelBarWidget from './DevPanelBarWidget'
 
 export default function Bar(gdkmonitor: Gdk.Monitor) {
 	const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
@@ -30,6 +31,9 @@ export default function Bar(gdkmonitor: Gdk.Monitor) {
 				</button> */}
 				<box $type="center" />
 				<box $type="end" marginEnd={16}>
+					<box marginStart={8}>
+						<DevPanelBarWidget />
+					</box>
 					<box marginEnd={4}>
 						<CpuBarMonitor />
 					</box>
