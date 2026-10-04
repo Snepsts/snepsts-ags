@@ -14,10 +14,7 @@ Install core files:
 
 > NOTE: It's possible it doesn't actually create the /usr/share/ags/js install and that is made by installing the arch package. Will figure out later.
 
-Install the [Hyprland Astal library](https://aylur.github.io/astal/guide/libraries/hyprland)
-Install the [Battery Astal library](https://aylur.github.io/astal/guide/libraries/battery)
-
-OR
+Install astal libraries
 
 `paru -S libastal-meta`
 
